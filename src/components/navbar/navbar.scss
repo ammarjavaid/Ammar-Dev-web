@@ -1,0 +1,127 @@
+
+header {
+  background-color: #000;
+  height: 10vh;
+  line-height: 10vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  .logo {
+    padding: 0 2rem;
+    @media screen and (max-width: 768px) {
+      padding: 0;
+    }
+    img {
+      width: 30px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 10vh;
+      left: -80%;
+      top: 1rem;
+      border-radius: 10px;
+      width: 40%;
+      list-style-type: none;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px;
+      text-align: center;
+      background-color: #252525ea;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 60%;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 70%;
+    }
+
+    li {
+      list-style-type: none;
+
+      a {
+        font-size: 15px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 30px;
+        &:hover{
+          @media screen and (max-width: 768px) {
+            background-color: #ffffff49;
+            transition: ease-in-out .5s;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          display: block;
+          color: var(--white);
+          margin-left: 0;
+        }
+      }
+    }
+
+    li.different {
+      border: none;
+      position: relative;
+    }
+
+    li.different:hover {
+      border: none;
+    }
+
+    li:hover {
+      border-bottom: 1px solid #FFFFFF;
+      @media screen and (max-width: 768px) {
+        border-bottom: none;
+      }
+    }
+
+    .different::after {
+      content: '';
+      position: absolute;
+      width: 0px;
+      height: 2px;
+      left: 50%;
+      bottom: 0;
+      top: 50px;
+      background-color: white;
+      transition: all ease-in-out .4s;
+      @media screen and (max-width: 768px) {
+        background: none;
+      }
+    }
+
+    .different:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+  }
+
+  .hideMenu {
+    left: 1rem;
+    transition: 0.5s;
+  }
+
+  .toggle {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      background: none;
+      font-size: 25px;
+      margin-top: 0;
+    }
+  }
+}

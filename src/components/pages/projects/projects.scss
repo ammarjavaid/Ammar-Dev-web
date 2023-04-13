@@ -1,0 +1,95 @@
+.main__projects{
+    background-color: #000;
+    margin: auto;
+    padding: 5rem 0;
+    
+    h3{
+      color: #fff;
+      font-weight: 600;
+      padding-bottom: 2rem;
+      max-width: 85%;
+      margin: auto;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        margin: auto;
+        max-width:85%;
+         @media screen and (max-width: 868px) {
+          grid-template-columns: repeat(3, 1fr);    
+        }
+         @media screen and (max-width: 768px) {
+          grid-template-columns: repeat(2, 1fr);    
+        }
+         @media screen and (max-width: 600px) {
+          grid-template-columns: repeat(1, 1fr);    
+        }
+        .one{
+            background-color: red;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            transition: .3s ease-in-out;
+            position: relative;
+            img{
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+            span{
+                position: absolute;
+                left: 0;
+                background-color: #fff;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                padding-top: 6rem;
+                opacity: 0;
+                cursor: pointer;
+                transition: all ease-in-out .4s;
+                &:hover{
+                    opacity: .7;
+                    font-weight: 700;
+                    color: #000 !important; 
+                }
+            }
+        }
+    }
+    .bottom__btn{
+        text-align: center;
+        padding-top: 3rem;
+        button{
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #fff;
+        }
+    }
+    a.different{
+        border:none;
+        position: relative;
+      }
+      a.different:hover{
+        border: none;
+      }
+      a:hover {
+        border-bottom: 1px solid #FFFFFF;
+      }
+      .different::after{
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 2px;
+        left: 50%;
+        top: 20px;
+        bottom:0;
+        background-color: white;
+        transition: all ease-in-out .4s !important;
+      }
+      .different:hover::after{
+        width: 100%;
+        left: 0;
+      }
+}
+
