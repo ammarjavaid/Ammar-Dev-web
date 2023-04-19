@@ -26,7 +26,7 @@ const Navbar = () => {
                         <li className='different' onClick={toggle}><a href="#"> Home </a></li>
                         <li className='different' onClick={toggle}><a href="#services"> Services </a></li>
                         <li className='different' onClick={toggle}><a href="#projects"> Projects </a></li>
-                        <li className='different' onClick={toggle}><a href="#reviews"> Reviews </a></li>
+                        <li className='different' onClick={toggle}><a href="#about"> About Me </a></li>
                         <li className='different' onClick={toggle}><a href="#contact"> Contact </a></li>
                     </ul>
                     <button className='toggle' onClick={() => setOpen(!open)}>

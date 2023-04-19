@@ -13,7 +13,7 @@ const Reviews = () => {
 
   return (
     <>
-      <section className='about' id='reviews'>
+      <section className='about' id='about'>
         <div className='container flex'>
           <div className='left' data-aos="fade-up" data-aos-duration='300'>
             <img src={man} alt="img" />

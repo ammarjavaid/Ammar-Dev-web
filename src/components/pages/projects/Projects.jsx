@@ -1,18 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./projects.scss"
-import cars from "../../images/cars.png"
-import corona from "../../images/corona.png"
-import gym from "../../images/gym.png"
-import netflix from "../../images/netflix.png"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom'
-// import { Link } from 'react-router-dom'
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../../Firebase';
+import ProjectCard from '../AllProjects/ProjectCard';
 
 const Projects = () => {
 
+  const [myProjects, setMyProjects] = useState([]);
+
   useEffect(() => {
     AOS.init();
+  }, []);
+
+  const getCollectionRef = collection(db, "AddProjects");
+
+  useEffect(() => {
+
+    const unsubscribe = onSnapshot(getCollectionRef, snapshot => (
+      setMyProjects(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+    ))
+    return () => {
+      unsubscribe();
+    }
   }, []);
 
   return (
@@ -20,22 +32,17 @@ const Projects = () => {
       <div className='main__projects' id='projects'>
         <h3 data-aos="fade-up" data-aos-duration='300'> Projects. </h3>
         <div className='content' data-aos="fade-up" data-aos-duration='500'>
-          <div className='one'>
-            <img src={cars} alt='' />
-            <a href="https://ammar-dashboard.netlify.app/" target='_blank'><span>Check Details</span></a>
-          </div>
-          <div className='one'>
-            <img src={corona} alt='' />
-            <a href="https://corona-dashboard-06.netlify.app/" target='_blank'><span>Check Details</span></a>
-          </div>
-          <div className='one'>
-            <img src={gym} alt='' />
-            <a href="https://fit-club-02.netlify.app/" target='_blank'><span>Check Details</span></a>
-          </div>
-          <div className='one'>
-            <img src={netflix} alt='' />
-            <a href="https://streamo-netflix-01.netlify.app/" target='_blank'><span>Check Details</span></a>
-          </div>
+
+
+          {
+            myProjects.slice(0, 4).map((curElm) => {
+              return (
+                <>
+                  <ProjectCard title={curElm.title} imageLink={curElm.imageLink} videoLink={curElm.videoLink} description={curElm.description} id={curElm.id} />
+                </>
+              )
+            })
+          }
         </div>
         <div className='bottom__btn' data-aos="fade-up" data-aos-duration='300'>
           <Link to="/all-projects" className='different'> <button> Check More </button> </Link>
